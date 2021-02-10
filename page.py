@@ -1,4 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 import locators
 import element
 
@@ -51,7 +53,11 @@ class MainPage(BasePage):
         element = self.driver.find_element(*locators.MainPageLocators.ADD_CLIENT_BUTTON)
         element.click()
         WebDriverWait(self.driver, 3).until(
-            lambda driver: driver.find_element(*locators.MainPageLocators.ADD_SAVE_CHANGES_BUTTON))      
+            lambda driver: driver.find_element(*locators.MainPageLocators.ADD_SAVE_CHANGES_BUTTON))
+
+    def clickSubmit(self):
+        element = self.driver.find_element(*locators.MainPageLocators.ADD_SAVE_CHANGES_BUTTON)
+        element.click()   
 
     
 

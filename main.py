@@ -7,6 +7,7 @@ class B2ATests(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome('C:\chromedriver.exe')
+        self.driver.maximize_window()
         self.driver.get(credentials.WEBSITE)
         '''Welcome page'''
         welcome_page = page.WelcomePage(self.driver)
@@ -31,6 +32,7 @@ class B2ATests(unittest.TestCase):
         main_page.add_user_email = 'tomilijones@gmail.com'
         main_page.add_user_phone = '445666777'
         main_page.add_user_calories = '2300'
+        main_page.clickSubmit()
 
 
 if __name__ == "__main__":
