@@ -28,3 +28,20 @@ class LoginEmailElement(BasePageElement):
 class LoginPassElement(BasePageElement):
 
     locator = locators.LoginPageLocators.PASS_FIELD
+
+class AddUserName(BasePageElement):
+
+    locator = locators.MainPageLocators.ADD_NAME_FIELD
+
+class AddUserEmail(BasePageElement):
+
+    locator = locators.MainPageLocators.ADD_EMAIL_FIELD
+
+class AddUserPhone(BasePageElement):
+
+    locator = locators.MainPageLocators.ADD_PHONE_FIELD
+
+class AddUserCalories(BasePageElement):
+
+    locator = locators.MainPageLocators.ADD_CALORIES_FIELD
+
