@@ -1,5 +1,4 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import locators
 import element
@@ -41,6 +40,7 @@ class MainPage(BasePage):
     add_user_email = element.AddUserEmail()
     add_user_phone = element.AddUserPhone()
     add_user_calories = element.AddUserCalories()
+    add_user_gym = element.AddUserSelectGym()
 
 
     def mainPageCheck(self):
@@ -57,7 +57,14 @@ class MainPage(BasePage):
 
     def clickSubmit(self):
         element = self.driver.find_element(*locators.MainPageLocators.ADD_SAVE_CHANGES_BUTTON)
-        element.click()   
+        element.click()
+
+    def clickActive(self):
+        element = self.driver.find_element(*locators.MainPageLocators.ADD_ACTIVE_SLIDER)
+        element.click()
+
+    def verifyNewUser(self, name, email, phone, gym, active):
+        element = self.driver.find_element()   
 
     
 

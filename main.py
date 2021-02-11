@@ -2,11 +2,12 @@ import unittest
 from selenium import webdriver
 import page
 import credentials
+import time
 
 class B2ATests(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome('C:\chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path=r'C:\chromedriver.exe')
         self.driver.maximize_window()
         self.driver.get(credentials.WEBSITE)
         '''Welcome page'''
@@ -24,15 +25,21 @@ class B2ATests(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
-    def test1_AddDeleteUser(self):
+    def disabled_test1_AddUser(self):
+        '''This test case verifies functionality of adding new user
+            and also checks if user attributes are set properly
+            Disabled because we cannot delete users in GUI'''
         main_page = page.MainPage(self.driver)
         assert main_page.mainPageCheck(), "Main Page title did not match"
         main_page.clickAddClient()
-        main_page.add_user_name = 'Tomili Jones'
-        main_page.add_user_email = 'tomilijones@gmail.com'
-        main_page.add_user_phone = '445666777'
+        main_page.clickActive()
+        main_page.add_user_name = 'Carl Johnson'
+        main_page.add_user_email = 'cj_grooveStreetFL@gmail.com'
+        main_page.add_user_phone = '445676777'
+        main_page.add_user_gym = 'Frankfield'
         main_page.add_user_calories = '2300'
         main_page.clickSubmit()
+        
 
 
 if __name__ == "__main__":
