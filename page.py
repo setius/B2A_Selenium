@@ -41,10 +41,11 @@ class MainPage(BasePage):
     add_user_phone = element.AddUserPhone()
     add_user_calories = element.AddUserCalories()
     add_user_gym = element.AddUserSelectGym()
+    first_user_select_gym = element.FirstUserSelectGym()
 
 
     def mainPageCheck(self):
-        WebDriverWait(self.driver, 2).until(
+        WebDriverWait(self.driver, 3).until(
             lambda driver: driver.find_element(*locators.MainPageLocators.ADD_CLIENT_BUTTON))
         return "Clients" in self.driver.title
     

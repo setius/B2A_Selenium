@@ -19,7 +19,7 @@ class BasePageElement(object):
         WebDriverWait(driver, 100).until(
             lambda driver: driver.find_element(*self.locator))
         element = driver.find_element(*self.locator)
-        return element.get_attribute("value")
+        return element
 
 class BaseDropDownBarElement(object):
     '''Base element to handle drop down bars'''
@@ -30,19 +30,22 @@ class BaseDropDownBarElement(object):
             lambda driver: driver.find_element(*self.locator))
         driver.find_element(*self.locator).click()
         self.xpath = "//span[@class='" + self.classname + "' and text()='" + value +"']" 
-        print(self.xpath)
         WebDriverWait(driver, 5).until(
             lambda driver: driver.find_element_by_xpath(self.xpath))
         driver.find_element_by_xpath(self.xpath).click()
 
 
-    def __get__(self, obj, owner):
+    def __get__(self, obj, value, owner):
         """Gets the text of the specified object"""
         driver = obj.driver
         WebDriverWait(driver, 100).until(
             lambda driver: driver.find_element(*self.locator))
-        element = driver.find_element(*self.locator)
-        return element.get_attribute("value")
+        driver.find_element(*self.locator).click()
+        self.xpath = "//span[@class='" + self.classname + "' and text()='" + value +"']" 
+        WebDriverWait(driver, 5).until(
+            lambda driver: driver.find_element_by_xpath(self.xpath))
+        element = driver.find_element_by_xpath(self.xpath)
+        return element
 
 class LoginEmailElement(BasePageElement):
 
@@ -71,6 +74,16 @@ class AddUserCalories(BasePageElement):
 class AddUserSelectGym(BaseDropDownBarElement):
 
     locator = locators.MainPageLocators.ADD_GYM_FIELD
+    classname = 'mat-option-text'
+
+class AddUserSelectGym(BaseDropDownBarElement):
+
+    locator = locators.MainPageLocators.ADD_GYM_FIELD
+    classname = 'mat-option-text'
+
+class FirstUserSelectGym(BaseDropDownBarElement):
+
+    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_GYM
     classname = 'mat-option-text'
 
 

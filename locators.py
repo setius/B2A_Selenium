@@ -22,7 +22,13 @@ class MainPageLocators(object):
     ADD_PHONE_FIELD = (By.XPATH, '//input[@formcontrolname="phone"]')
     ADD_CALORIES_FIELD = (By.XPATH, '//input[@formcontrolname="caloriesTarget"]')
     ADD_GYM_FIELD = (By.XPATH, '//mat-select[@formcontrolname="gymCode"]')
-    ADD_GYM_FIELD_FRANKFIELD = (By.XPATH, '//span[normalize-space()="Frankfield"]')
+    CLIENT_LIST_FIRST_ROW = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]')
+    CLIENT_LIST_FIRST_ROW_ID = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[1]')
+    CLIENT_LIST_FIRST_ROW_NAME = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[2]')
+    CLIENT_LIST_FIRST_ROW_EMAIL = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[3]')
+    CLIENT_LIST_FIRST_ROW_PHONE = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[4]')
+    CLIENT_LIST_FIRST_ROW_GYM = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[5]/mat-form-field/div/div')
+    CLIENT_LIST_FIRST_ROW_STATUS = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[8]')
 
 
 

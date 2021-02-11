@@ -25,12 +25,13 @@ class B2ATests(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
-    def disabled_test1_AddUser(self):
+    def test1_AddUser(self):
         '''This test case verifies functionality of adding new user
             and also checks if user attributes are set properly
             Disabled because we cannot delete users in GUI'''
         main_page = page.MainPage(self.driver)
         assert main_page.mainPageCheck(), "Main Page title did not match"
+        '''
         main_page.clickAddClient()
         main_page.clickActive()
         main_page.add_user_name = 'Carl Johnson'
@@ -39,6 +40,14 @@ class B2ATests(unittest.TestCase):
         main_page.add_user_gym = 'Frankfield'
         main_page.add_user_calories = '2300'
         main_page.clickSubmit()
+        '''
+        main_page.first_user_select_gym
+
+    def dis_test2_UserAttributesVerification(self):
+        main_page = page.MainPage(self.driver)
+        assert main_page.mainPageCheck(), "Main Page title did not match"
+
+
         
 
 
