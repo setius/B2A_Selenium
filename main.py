@@ -41,7 +41,9 @@ class B2ATests(unittest.TestCase):
         main_page.add_user_calories = '2300'
         main_page.clickSubmit()
         '''
-        main_page.first_user_select_gym
+        x = main_page.first_user_select_gym
+        print(x.text)
+        time.sleep(3)
 
     def dis_test2_UserAttributesVerification(self):
         main_page = page.MainPage(self.driver)

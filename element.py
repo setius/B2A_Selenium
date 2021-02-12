@@ -35,16 +35,12 @@ class BaseDropDownBarElement(object):
         driver.find_element_by_xpath(self.xpath).click()
 
 
-    def __get__(self, obj, value, owner):
+    def __get__(self, obj, owner):
         """Gets the text of the specified object"""
         driver = obj.driver
         WebDriverWait(driver, 100).until(
-            lambda driver: driver.find_element(*self.locator))
-        driver.find_element(*self.locator).click()
-        self.xpath = "//span[@class='" + self.classname + "' and text()='" + value +"']" 
-        WebDriverWait(driver, 5).until(
-            lambda driver: driver.find_element_by_xpath(self.xpath))
-        element = driver.find_element_by_xpath(self.xpath)
+            lambda driver: driver.find_element(*self.locator)) 
+        element = driver.find_element(*self.locator)
         return element
 
 class LoginEmailElement(BasePageElement):

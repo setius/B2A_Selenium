@@ -45,7 +45,7 @@ class MainPage(BasePage):
 
 
     def mainPageCheck(self):
-        WebDriverWait(self.driver, 3).until(
+        WebDriverWait(self.driver, 10).until(
             lambda driver: driver.find_element(*locators.MainPageLocators.ADD_CLIENT_BUTTON))
         return "Clients" in self.driver.title
     
@@ -53,7 +53,7 @@ class MainPage(BasePage):
 
         element = self.driver.find_element(*locators.MainPageLocators.ADD_CLIENT_BUTTON)
         element.click()
-        WebDriverWait(self.driver, 3).until(
+        WebDriverWait(self.driver, 10).until(
             lambda driver: driver.find_element(*locators.MainPageLocators.ADD_SAVE_CHANGES_BUTTON))
 
     def clickSubmit(self):
