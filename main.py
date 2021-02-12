@@ -31,19 +31,28 @@ class B2ATests(unittest.TestCase):
             Disabled because we cannot delete users in GUI'''
         main_page = page.MainPage(self.driver)
         assert main_page.mainPageCheck(), "Main Page title did not match"
+        user = 'Carl Johnson'
+        email = 'cj_grooveStreetFL@gmail.com'
+        phone = '445676777'
+        gym = 'Frankfield'
+        calories = '2300'
         '''
         main_page.clickAddClient()
         main_page.clickActive()
-        main_page.add_user_name = 'Carl Johnson'
-        main_page.add_user_email = 'cj_grooveStreetFL@gmail.com'
-        main_page.add_user_phone = '445676777'
-        main_page.add_user_gym = 'Frankfield'
-        main_page.add_user_calories = '2300'
+        main_page.add_user_name = user
+        main_page.add_user_email = email
+        main_page.add_user_phone = phone
+        main_page.add_user_gym = gym
+        main_page.add_user_calories = calories
         main_page.clickSubmit()
         '''
-        x = main_page.first_user_select_gym
-        print(x.text)
-        time.sleep(3)
+        assert user in main_page.first_user_name.text, "User Name was not set properly"
+        assert email.upper() in main_page.first_user_email.text.upper(), "User Email was not set properly"
+        assert phone in main_page.first_user_phone.text, "User Phone was not set properly"
+        assert gym in main_page.first_user_select_gym.text, "User Gym was not set properly"
+        assert "Active" in main_page.first_user_status.text, "User status was not set properly"
+
+        
 
     def dis_test2_UserAttributesVerification(self):
         main_page = page.MainPage(self.driver)

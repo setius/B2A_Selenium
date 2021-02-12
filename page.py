@@ -42,6 +42,10 @@ class MainPage(BasePage):
     add_user_calories = element.AddUserCalories()
     add_user_gym = element.AddUserSelectGym()
     first_user_select_gym = element.FirstUserSelectGym()
+    first_user_name = element.FirstUserName()
+    first_user_email = element.FirstUserEmail()
+    first_user_phone = element.FirstUserPhone()
+    first_user_status = element.FirstUserStatus()
 
 
     def mainPageCheck(self):

@@ -82,4 +82,21 @@ class FirstUserSelectGym(BaseDropDownBarElement):
     locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_GYM
     classname = 'mat-option-text'
 
+class FirstUserName(BasePageElement):
+
+    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_NAME
+
+class FirstUserEmail(BasePageElement):
+
+    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_EMAIL
+
+class FirstUserPhone(BasePageElement):
+
+    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_PHONE
+
+class FirstUserStatus(BasePageElement):
+
+    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_STATUS
+
+
 
