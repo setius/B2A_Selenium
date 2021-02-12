@@ -8,6 +8,16 @@ class BasePage(object):
     def __init__(self,driver):
         self.driver = driver
 
+    # def get_row_data(self, table, column):
+    #     xpath = ".//td[" + str(column) + "]"
+    #     for row in table.find_elements_by_xpath(".//tr"):
+    #         print(td.text for td in row.find_elements_by_xpath(xpath))
+
+    def get_column_data(self, table, column):
+        xpath = ".//td[" + str(column) + "]"
+        return list(row.find_element_by_xpath(xpath).text for row in table.find_elements_by_xpath(".//tr"))
+            
+
 class WelcomePage(BasePage):
 
     def welcomePageCheck(self):
@@ -46,6 +56,11 @@ class MainPage(BasePage):
     first_user_email = element.FirstUserEmail()
     first_user_phone = element.FirstUserPhone()
     first_user_status = element.FirstUserStatus()
+    searchbar_name = element.SearchBarName()
+    searchbar_status = element.SearchBarSelectStatus()
+    searchbar_gym = element.SearchBarSelectGym()
+    clients_rowgroup = element.ClientsRowGroup()
+
 
 
     def mainPageCheck(self):
@@ -68,8 +83,10 @@ class MainPage(BasePage):
         element = self.driver.find_element(*locators.MainPageLocators.ADD_ACTIVE_SLIDER)
         element.click()
 
-    def verifyNewUser(self, name, email, phone, gym, active):
-        element = self.driver.find_element()   
+    def clickSearchBarClear(self):
+        element = self.driver.find_element(*locators.MainPageLocators.SEARCHBAR_CLEAR)
+        element.click()
+  
 
     
 

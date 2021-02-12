@@ -8,7 +8,7 @@ class BasePageElement(object):
     def __set__(self, obj, value):
         """Sets the text field to the value supplied"""
         driver = obj.driver
-        WebDriverWait(driver, 100).until(
+        WebDriverWait(driver, 3).until(
             lambda driver: driver.find_element(*self.locator))
         driver.find_element(*self.locator).clear()
         driver.find_element(*self.locator).send_keys(value)
@@ -16,7 +16,7 @@ class BasePageElement(object):
     def __get__(self, obj, owner):
         """Gets the text of the specified object"""
         driver = obj.driver
-        WebDriverWait(driver, 100).until(
+        WebDriverWait(driver, 3).until(
             lambda driver: driver.find_element(*self.locator))
         element = driver.find_element(*self.locator)
         return element
@@ -98,5 +98,21 @@ class FirstUserStatus(BasePageElement):
 
     locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_STATUS
 
+class SearchBarName(BasePageElement):
+    
+    locator = locators.MainPageLocators.SEARCHBAR_NAME
 
+class SearchBarSelectStatus(BaseDropDownBarElement):
+
+    locator = locators.MainPageLocators.SEARCHBAR_STATUS
+    classname = 'mat-option-text'
+
+class SearchBarSelectGym(BaseDropDownBarElement):
+
+    locator = locators.MainPageLocators.SEARCHBAR_GYM
+    classname = 'mat-option-text'
+
+class ClientsRowGroup(BasePageElement):
+
+    locator = locators.MainPageLocators.CLIENT_LIST_TAB
 
