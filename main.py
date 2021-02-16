@@ -65,18 +65,15 @@ class B2ATests(unittest.TestCase):
         main_page = page.MainPage(self.driver)
         assert main_page.mainPageCheck(), "Main Page title did not match"
         main_page.searchbar_name = user
-        # time.sleep(1)
         assert main_page.first_user_name.text in user, "User did not match with searched user"
         assert main_page.first_user_email.text.upper() in email.upper(), "Email did not match with searched user"
         assert main_page.first_user_status.text in active_status, "Email did not match with searched user"
         main_page.clickSearchBarClear()
         main_page.searchbar_status = inactive_status
-        # time.sleep(1)
         active_column = main_page.get_column_data(main_page.clients_rowgroup, 8)
         assert all(element==inactive_status for element in active_column), "Search did not filter status properly"
         main_page.clickSearchBarClear()
         main_page.searchbar_gym = gym
-        # time.sleep(1)
         gym_column = main_page.get_column_data(main_page.clients_rowgroup, 5)
         assert all(element==gym for element in gym_column), "Search did not filter gym properly"
 
@@ -100,10 +97,6 @@ class B2ATests(unittest.TestCase):
         recipes_page.deleteRecentRecipe()
         time.sleep(1)
         assert recipes_page.first_recipe_name.text not in RECIPE_NAME, "Recipe was not deleted properly after test"
-        
-
-
-
         
 
 
