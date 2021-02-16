@@ -34,6 +34,21 @@ class MainPageLocators(object):
     SEARCHBAR_STATUS = (By.XPATH, '//div[@class="top-form"]/mat-form-field[2]')
     SEARCHBAR_GYM = (By.XPATH, '//div[@class="top-form"]/mat-form-field[4]')
     SEARCHBAR_CLEAR = (By.XPATH, '//div[@class="top-form"]/button')
+    GO_TO_RECIPES = (By.XPATH, '//a[@href="/admin/recipes"]')
+
+class RecipesPageLocators(object):
+
+    ADD_RECIPE_BUTTON = (By.XPATH, '//mat-icon[normalize-space()="add"]')
+    ADD_RECIPE_TITLE = (By.XPATH, '//input[@placeholder="Title"]')
+    ADD_RECIPE_IMG_INPUT = (By.XPATH, '//div[@class="form-control-attachments"]/div[1]//input[@type="file"]')
+    ADD_RECIPE_PDF_INPUT = (By.XPATH, '//div[@class="form-control-attachments"]/div[2]//input[@type="file"]')
+    RECIPE_SUBMIT_BUTTON = (By.XPATH, '//button[not(@disabled)]/span[normalize-space()="Submit"]')
+    REMOVE_IMG_BUTTON = (By.XPATH, '//span[normalize-space()="Remove image"]')
+    REMOVE_PDF_BUTTON = (By.XPATH, '//span[normalize-space()="Remove recipe file"]')
+    RECIPES_FIRST_ROW_TITLE = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[2]')
+    RECIPES_FIRST_ROW_DELETE = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[5]/div/button[2]')
+    RECIPES_CONFIRM_DELETE = (By.XPATH, '//span[normalize-space()="OK"]')
+
 
 
 

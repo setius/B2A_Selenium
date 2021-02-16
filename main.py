@@ -25,7 +25,7 @@ class B2ATests(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
-    def dis_test1_AddUser(self):
+    def test1_AddUser(self):
         '''This test case verifies functionality of adding new user
             and also checks if user attributes are set properly
             Disabled because we cannot delete users in GUI'''
@@ -65,20 +65,43 @@ class B2ATests(unittest.TestCase):
         main_page = page.MainPage(self.driver)
         assert main_page.mainPageCheck(), "Main Page title did not match"
         main_page.searchbar_name = user
-        time.sleep(1)
+        # time.sleep(1)
         assert main_page.first_user_name.text in user, "User did not match with searched user"
         assert main_page.first_user_email.text.upper() in email.upper(), "Email did not match with searched user"
         assert main_page.first_user_status.text in active_status, "Email did not match with searched user"
         main_page.clickSearchBarClear()
         main_page.searchbar_status = inactive_status
-        time.sleep(1)
+        # time.sleep(1)
         active_column = main_page.get_column_data(main_page.clients_rowgroup, 8)
         assert all(element==inactive_status for element in active_column), "Search did not filter status properly"
         main_page.clickSearchBarClear()
         main_page.searchbar_gym = gym
-        time.sleep(1)
+        # time.sleep(1)
         gym_column = main_page.get_column_data(main_page.clients_rowgroup, 5)
         assert all(element==gym for element in gym_column), "Search did not filter gym properly"
+
+    def test3_checkRecipesPage(self):
+
+        RECIPE_NAME = "Chocolate brownie with peanutbutter"
+        RECIPE_IMG_PATH = r"C:\Users\jania\Desktop\Repositories\B2A_Selenium\brownie.PNG"
+        RECIPE_PDF_PATH = r"C:\Users\jania\Desktop\Repositories\B2A_Selenium\recipe.pdf"
+        main_page = page.MainPage(self.driver)
+        assert main_page.mainPageCheck(), "Main Page title did not match"
+        main_page.clickRecipesPage()
+        recipes_page = page.RecipesPage(self.driver)
+        assert recipes_page.recipesPageCheck(), "Recipes page title did not match"
+        recipes_page.clickAddRecipe()
+        recipes_page.add_recipe_title = RECIPE_NAME
+        recipes_page.upload_img_recipe = RECIPE_IMG_PATH
+        recipes_page.upload_pdf_recipe = RECIPE_PDF_PATH
+        recipes_page.clickSubmitRecipe()
+        time.sleep(1)
+        assert recipes_page.first_recipe_name.text in RECIPE_NAME, "Recipe was not created properly"
+        recipes_page.deleteRecentRecipe()
+        time.sleep(1)
+        assert recipes_page.first_recipe_name.text not in RECIPE_NAME, "Recipe was not deleted properly after test"
+        
+
 
 
         

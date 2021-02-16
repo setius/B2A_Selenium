@@ -8,7 +8,7 @@ class BasePageElement(object):
     def __set__(self, obj, value):
         """Sets the text field to the value supplied"""
         driver = obj.driver
-        WebDriverWait(driver, 3).until(
+        WebDriverWait(driver, 5).until(
             lambda driver: driver.find_element(*self.locator))
         driver.find_element(*self.locator).clear()
         driver.find_element(*self.locator).send_keys(value)
@@ -16,7 +16,7 @@ class BasePageElement(object):
     def __get__(self, obj, owner):
         """Gets the text of the specified object"""
         driver = obj.driver
-        WebDriverWait(driver, 3).until(
+        WebDriverWait(driver, 5).until(
             lambda driver: driver.find_element(*self.locator))
         element = driver.find_element(*self.locator)
         return element
@@ -38,10 +38,21 @@ class BaseDropDownBarElement(object):
     def __get__(self, obj, owner):
         """Gets the text of the specified object"""
         driver = obj.driver
-        WebDriverWait(driver, 100).until(
+        WebDriverWait(driver, 5).until(
             lambda driver: driver.find_element(*self.locator)) 
         element = driver.find_element(*self.locator)
         return element
+
+
+class BaseUploadFileElement(object):
+    """Base class used to handle file upload input."""
+
+    def __set__(self, obj, value):
+        driver = obj.driver
+        WebDriverWait(driver, 5).until(
+            lambda driver: driver.find_element(*self.locator))
+        driver.find_element(*self.locator).send_keys(value)
+
 
 class LoginEmailElement(BasePageElement):
 
@@ -115,4 +126,22 @@ class SearchBarSelectGym(BaseDropDownBarElement):
 class ClientsRowGroup(BasePageElement):
 
     locator = locators.MainPageLocators.CLIENT_LIST_TAB
+
+class InputRecipeName(BasePageElement):
+
+    locator = locators.RecipesPageLocators.ADD_RECIPE_TITLE
+
+class UploadRecipeIMG(BaseUploadFileElement):
+
+    locator = locators.RecipesPageLocators.ADD_RECIPE_IMG_INPUT
+
+class UploadRecipePDF(BaseUploadFileElement):
+
+    locator = locators.RecipesPageLocators.ADD_RECIPE_PDF_INPUT
+
+class FirstRecipeName(BasePageElement):
+
+    locator = locators.RecipesPageLocators.RECIPES_FIRST_ROW_TITLE
+
+
 

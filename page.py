@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 import locators
 import element
 
@@ -8,14 +9,10 @@ class BasePage(object):
     def __init__(self,driver):
         self.driver = driver
 
-    # def get_row_data(self, table, column):
-    #     xpath = ".//td[" + str(column) + "]"
-    #     for row in table.find_elements_by_xpath(".//tr"):
-    #         print(td.text for td in row.find_elements_by_xpath(xpath))
-
     def get_column_data(self, table, column):
         xpath = ".//td[" + str(column) + "]"
         return list(row.find_element_by_xpath(xpath).text for row in table.find_elements_by_xpath(".//tr"))
+
             
 
 class WelcomePage(BasePage):
@@ -86,7 +83,40 @@ class MainPage(BasePage):
     def clickSearchBarClear(self):
         element = self.driver.find_element(*locators.MainPageLocators.SEARCHBAR_CLEAR)
         element.click()
-  
+
+    def clickRecipesPage(self):
+        
+        element = self.driver.find_element(*locators.MainPageLocators.GO_TO_RECIPES)
+        element.click()       
+
+class RecipesPage(BasePage):
+
+    add_recipe_title = element.InputRecipeName()
+    upload_img_recipe = element.UploadRecipeIMG()
+    upload_pdf_recipe = element.UploadRecipePDF()
+    first_recipe_name = element.FirstRecipeName()
+
+    def recipesPageCheck(self):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.RecipesPageLocators.ADD_RECIPE_BUTTON))
+        return "Recipes" in self.driver.title
+
+    def clickAddRecipe(self):
+
+        element = self.driver.find_element(*locators.RecipesPageLocators.ADD_RECIPE_BUTTON)
+        element.click()  
+
+    def clickSubmitRecipe(self):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.RecipesPageLocators.RECIPE_SUBMIT_BUTTON))
+        element = self.driver.find_element(*locators.RecipesPageLocators.RECIPE_SUBMIT_BUTTON)
+        element.click() 
+
+    def deleteRecentRecipe(self):
+
+        element = self.driver.find_element(*locators.RecipesPageLocators.RECIPES_FIRST_ROW_DELETE)
+        element.click()
+        self.driver.find_element(*locators.RecipesPageLocators.RECIPES_CONFIRM_DELETE).click()
 
     
 
