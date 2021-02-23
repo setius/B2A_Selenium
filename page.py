@@ -1,6 +1,4 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 import locators
 import element
 
@@ -87,7 +85,17 @@ class MainPage(BasePage):
     def clickRecipesPage(self):
         
         element = self.driver.find_element(*locators.MainPageLocators.GO_TO_RECIPES)
-        element.click()       
+        element.click()    
+
+    def clickWorkoutsPage(self):
+        
+        element = self.driver.find_element(*locators.MainPageLocators.GO_TO_WORKOUTS)
+        element.click()  
+
+    def clickTestimonialsPage(self):
+        
+        element = self.driver.find_element(*locators.MainPageLocators.GO_TO_TESTIMONIALS)
+        element.click()     
 
 class RecipesPage(BasePage):
 
@@ -117,6 +125,63 @@ class RecipesPage(BasePage):
         element = self.driver.find_element(*locators.RecipesPageLocators.RECIPES_FIRST_ROW_DELETE)
         element.click()
         self.driver.find_element(*locators.RecipesPageLocators.RECIPES_CONFIRM_DELETE).click()
+
+
+class WorkoutProgramsPage(BasePage):
+
+    add_title = element.InputWorkoutTitle()
+    add_desc = element.InputWorkoutDescription()
+    add_bodyPart = element.InputWorkoutBodyPart()
+    add_YTlink = element.InputWorkoutYoutubeLink()
+    first_row_title = element.FirstWorkoutTitle()
+    first_row_desc = element.FirstWorkoutDesc()
+    first_row_yt = element.FirstWorkoutYoutube()
+    first_row_bodypart = element.FirstWorkoutBodyPart()
+    searchbar_status = element.SearchbarWorkoutStatus()
+    searchbar = element.SearchbarWorkout()
+    workouts_rowgroup =  element.WorkoutsRowGroup()
+
+    def workoutProgramsPageCheck(self):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.WorkoutProgramsPageLocators.PAGE_HEADER))
+        return "Workout programs" in self.driver.title
+
+    def clickAddWorkout(self):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.WorkoutProgramsPageLocators.ADD_WORKOUT_BUTTON))
+        element = self.driver.find_element(*locators.WorkoutProgramsPageLocators.ADD_WORKOUT_BUTTON)
+        element.click() 
+
+    def clickSubmit(self):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.WorkoutProgramsPageLocators.ADD_WORKOUT_SUBMIT))
+        element = self.driver.find_element(*locators.WorkoutProgramsPageLocators.ADD_WORKOUT_SUBMIT)
+        element.click() 
+
+    def clickFirstPreview(self):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_PREVIEW_BUTTON))
+        element = self.driver.find_element(*locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_PREVIEW_BUTTON)
+        element.click() 
+
+    def clickFirstDelete(self):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_DELETE_BUTTON))
+        element = self.driver.find_element(*locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_DELETE_BUTTON)
+        element.click() 
+
+    def clickCancelPreview(self):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.WorkoutProgramsPageLocators.PREVIEW_CANCEL_BUTTON))
+        element = self.driver.find_element(*locators.WorkoutProgramsPageLocators.PREVIEW_CANCEL_BUTTON)
+        element.click() 
+
+class TestimonialsPage(BasePage):
+    
+    def testimonialsPageCheck(self):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.TestimonialsPageLocators.PAGE_HEADER))
+        return "Testimonials" in self.driver.title
 
     
 

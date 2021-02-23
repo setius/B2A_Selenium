@@ -35,6 +35,8 @@ class MainPageLocators(object):
     SEARCHBAR_GYM = (By.XPATH, '//div[@class="top-form"]/mat-form-field[4]')
     SEARCHBAR_CLEAR = (By.XPATH, '//div[@class="top-form"]/button')
     GO_TO_RECIPES = (By.XPATH, '//a[@href="/admin/recipes"]')
+    GO_TO_WORKOUTS = (By.XPATH, '//a[@href="/admin/workout-programs"]')
+    GO_TO_RECIPES = (By.XPATH, '//a[@href="/admin/testimonials"]')
 
 class RecipesPageLocators(object):
 
@@ -50,5 +52,31 @@ class RecipesPageLocators(object):
     RECIPES_CONFIRM_DELETE = (By.XPATH, '//span[normalize-space()="OK"]')
 
 
+class WorkoutProgramsPageLocators(object):
 
+    PAGE_HEADER = (By.XPATH, '//h2[normalize-space()="Workout programs"]')
+    ADD_WORKOUT_BUTTON = (By.XPATH, '//mat-icon[normalize-space()="add"]')
+    ADD_WORKOUT_YT = (By.XPATH, '//input[@formcontrolname="youtubeVideoId"]')
+    ADD_WORKOUT_DESC = (By.XPATH, '//input[@formcontrolname="description"]')
+    ADD_WORKOUT_TITLE = (By.XPATH, '//input[@formcontrolname="title"]')
+    ADD_WORKOUT_BODYPART = (By.XPATH, '//mat-select[@formcontrolname="bodyPart"]')
+    ADD_WORKOUT_SUBMIT = (By.XPATH, '//div[@class="modal-actions"]/button[2]')
+    SEARCH_FIELD = (By.XPATH, '//input[@placeholder="Type to search"]')
+    SEARCH_STATUS = (By.XPATH, '//div[@class="top-form"]/mat-form-field[2]')
+    WORKOUT_FIRST_ROW = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]')
+    WORKOUT_FIRST_ROW_BODYPART = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[2]')
+    WORKOUT_FIRST_ROW_DESC = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[4]')
+    WORKOUT_FIRST_ROW_TITLE = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[5]')
+    WORKOUT_FIRST_ROW_YT = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[7]/a')
+    WORKOUT_FIRST_ROW_STATUS = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[6]/mat-form-field/div/div')
+    WORKOUT_FIRST_ROW_PREVIEW_BUTTON = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[8]/div/button[1]')
+    WORKOUT_FIRST_ROW_DELETE_BUTTON = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[8]/div/button[3]')
+    WORKOUT_LIST_TAB = (By.XPATH, '//tbody[@role="rowgroup"]')
+    PREVIEW_CANCEL_BUTTON = (By.XPATH, '//span[normalize-space()="Cancel"]')
+    
+
+class TestimonialsPageLocators(object):
+
+    PAGE_HEADER = (By.XPATH, '//h2[normalize-space()="Testimonials"]')
+    ADD_TESTIMONIAL_BUTTON = (By.XPATH, '//mat-icon[normalize-space()="add"]')
 

@@ -29,7 +29,7 @@ class BaseDropDownBarElement(object):
         WebDriverWait(driver, 5).until(
             lambda driver: driver.find_element(*self.locator))
         driver.find_element(*self.locator).click()
-        self.xpath = "//span[@class='" + self.classname + "' and text()='" + value +"']" 
+        self.xpath = "//span[@class='" + self.classname + "' and normalize-space()='" + value +"']" 
         WebDriverWait(driver, 5).until(
             lambda driver: driver.find_element_by_xpath(self.xpath))
         driver.find_element_by_xpath(self.xpath).click()
@@ -54,6 +54,9 @@ class BaseUploadFileElement(object):
         driver.find_element(*self.locator).send_keys(value)
 
 
+
+
+# Login Page elements
 class LoginEmailElement(BasePageElement):
 
     locator = locators.LoginPageLocators.LOGIN_FIELD
@@ -61,6 +64,10 @@ class LoginEmailElement(BasePageElement):
 class LoginPassElement(BasePageElement):
 
     locator = locators.LoginPageLocators.PASS_FIELD
+
+
+
+# Main Page elements
 
 class AddUserName(BasePageElement):
 
@@ -127,6 +134,10 @@ class ClientsRowGroup(BasePageElement):
 
     locator = locators.MainPageLocators.CLIENT_LIST_TAB
 
+
+
+# Recipes Page elements
+
 class InputRecipeName(BasePageElement):
 
     locator = locators.RecipesPageLocators.ADD_RECIPE_TITLE
@@ -142,6 +153,57 @@ class UploadRecipePDF(BaseUploadFileElement):
 class FirstRecipeName(BasePageElement):
 
     locator = locators.RecipesPageLocators.RECIPES_FIRST_ROW_TITLE
+
+
+
+# Workouts Page elements
+
+class InputWorkoutYoutubeLink(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.ADD_WORKOUT_YT
+
+class InputWorkoutDescription(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.ADD_WORKOUT_DESC
+
+class InputWorkoutTitle(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.ADD_WORKOUT_TITLE
+
+class InputWorkoutBodyPart(BaseDropDownBarElement):
+
+    locator = locators.WorkoutProgramsPageLocators.ADD_WORKOUT_BODYPART
+    classname = 'mat-option-text'
+
+class FirstWorkoutTitle(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_TITLE
+
+class FirstWorkoutDesc(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_DESC
+
+class FirstWorkoutBodyPart(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_BODYPART
+
+class FirstWorkoutYoutube(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_YT
+
+class SearchbarWorkoutStatus(BaseDropDownBarElement):
+
+    locator = locators.WorkoutProgramsPageLocators.SEARCH_STATUS
+    classname = 'mat-option-text'
+
+
+class SearchbarWorkout(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.SEARCH_FIELD
+
+class WorkoutsRowGroup(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.WORKOUT_LIST_TAB
 
 
 
