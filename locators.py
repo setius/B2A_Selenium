@@ -2,6 +2,11 @@
 
 from selenium.webdriver.common.by import By
 
+class GenericLocators(object):
+
+    ROWGROUP = (By.XPATH, '//tbody[@role="rowgroup"]')
+
+
 class WelcomePageLocators(object):
 
     GO_BUTTON = (By.XPATH, '//span[normalize-space()="Go to app"]')
@@ -22,7 +27,7 @@ class MainPageLocators(object):
     ADD_PHONE_FIELD = (By.XPATH, '//input[@formcontrolname="phone"]')
     ADD_CALORIES_FIELD = (By.XPATH, '//input[@formcontrolname="caloriesTarget"]')
     ADD_GYM_FIELD = (By.XPATH, '//mat-select[@formcontrolname="gymCode"]')
-    CLIENT_LIST_TAB = (By.XPATH, '//tbody[@role="rowgroup"]')
+    #CLIENT_LIST_TAB = (By.XPATH, '//tbody[@role="rowgroup"]')
     CLIENT_LIST_FIRST_ROW = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]')
     CLIENT_LIST_FIRST_ROW_ID = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[1]')
     CLIENT_LIST_FIRST_ROW_NAME = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[2]')
@@ -36,7 +41,7 @@ class MainPageLocators(object):
     SEARCHBAR_CLEAR = (By.XPATH, '//div[@class="top-form"]/button')
     GO_TO_RECIPES = (By.XPATH, '//a[@href="/admin/recipes"]')
     GO_TO_WORKOUTS = (By.XPATH, '//a[@href="/admin/workout-programs"]')
-    GO_TO_RECIPES = (By.XPATH, '//a[@href="/admin/testimonials"]')
+    GO_TO_TESTIMONIALS = (By.XPATH, '//a[@href="/admin/testimonials"]')
 
 class RecipesPageLocators(object):
 
@@ -71,7 +76,7 @@ class WorkoutProgramsPageLocators(object):
     WORKOUT_FIRST_ROW_STATUS = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[6]/mat-form-field/div/div')
     WORKOUT_FIRST_ROW_PREVIEW_BUTTON = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[8]/div/button[1]')
     WORKOUT_FIRST_ROW_DELETE_BUTTON = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[8]/div/button[3]')
-    WORKOUT_LIST_TAB = (By.XPATH, '//tbody[@role="rowgroup"]')
+    # WORKOUT_LIST_TAB = (By.XPATH, '//tbody[@role="rowgroup"]')
     PREVIEW_CANCEL_BUTTON = (By.XPATH, '//span[normalize-space()="Cancel"]')
     
 
@@ -79,4 +84,10 @@ class TestimonialsPageLocators(object):
 
     PAGE_HEADER = (By.XPATH, '//h2[normalize-space()="Testimonials"]')
     ADD_TESTIMONIAL_BUTTON = (By.XPATH, '//mat-icon[normalize-space()="add"]')
+    FIRST_ROW_DELETE_BUTTON = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[6]/div/button[2]')
+    ADD_TEST_NAME = (By.XPATH, '//input[@formcontrolname="clientName"]')
+    ADD_TEST_DESC = (By.XPATH, '//input[@formcontrolname="description"]')
+    ADD_TEST_IMG = (By.XPATH, '//input[@type="file"]')
+    ADD_TEST_SUBMIT_BUTTON = (By.XPATH, '//button[not(@disabled)]/span[normalize-space()="Submit"]')
+
 

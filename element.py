@@ -14,7 +14,7 @@ class BasePageElement(object):
         driver.find_element(*self.locator).send_keys(value)
 
     def __get__(self, obj, owner):
-        """Gets the text of the specified object"""
+        """Returns specified element"""
         driver = obj.driver
         WebDriverWait(driver, 5).until(
             lambda driver: driver.find_element(*self.locator))
@@ -53,6 +53,13 @@ class BaseUploadFileElement(object):
             lambda driver: driver.find_element(*self.locator))
         driver.find_element(*self.locator).send_keys(value)
 
+
+
+# Generic Page Elements
+
+class RowgroupElement(BasePageElement):
+
+    locator = locators.GenericLocators.ROWGROUP
 
 
 
@@ -132,7 +139,7 @@ class SearchBarSelectGym(BaseDropDownBarElement):
 
 class ClientsRowGroup(BasePageElement):
 
-    locator = locators.MainPageLocators.CLIENT_LIST_TAB
+    locator = locators.GenericLocators.ROWGROUP
 
 
 
@@ -196,14 +203,50 @@ class SearchbarWorkoutStatus(BaseDropDownBarElement):
     locator = locators.WorkoutProgramsPageLocators.SEARCH_STATUS
     classname = 'mat-option-text'
 
-
 class SearchbarWorkout(BasePageElement):
 
     locator = locators.WorkoutProgramsPageLocators.SEARCH_FIELD
 
 class WorkoutsRowGroup(BasePageElement):
 
-    locator = locators.WorkoutProgramsPageLocators.WORKOUT_LIST_TAB
+    locator = locators.GenericLocators.ROWGROUP
+
+
+
+
+# Testimonials Page elements
+
+class CreateTestimonialButton(BasePageElement):
+
+    locator = locators.TestimonialsPageLocators.ADD_TESTIMONIAL_BUTTON
+
+class CreateTestimonialNameInput(BasePageElement):
+
+    locator = locators.TestimonialsPageLocators.ADD_TEST_NAME
+
+class CreateTestimonialDescInput(BasePageElement):
+
+    locator = locators.TestimonialsPageLocators.ADD_TEST_DESC
+
+class CreateTestimonialFileInplut(BaseUploadFileElement):
+
+    locator = locators.TestimonialsPageLocators.ADD_TEST_IMG
+
+class CreateTestimonialSubmitButton(BasePageElement):
+
+    locator = locators.TestimonialsPageLocators.ADD_TEST_SUBMIT_BUTTON
+
+class TestimonialFirstRowDeleteButton(BasePageElement):
+
+    locator = locators.TestimonialsPageLocators.FIRST_ROW_DELETE_BUTTON
+
+
+
+
+
+
+
+
 
 
 

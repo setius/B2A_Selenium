@@ -4,6 +4,8 @@ import element
 
 class BasePage(object):
 
+    rowgroup = element.RowgroupElement()
+
     def __init__(self,driver):
         self.driver = driver
 
@@ -54,7 +56,7 @@ class MainPage(BasePage):
     searchbar_name = element.SearchBarName()
     searchbar_status = element.SearchBarSelectStatus()
     searchbar_gym = element.SearchBarSelectGym()
-    clients_rowgroup = element.ClientsRowGroup()
+    #clients_rowgroup = element.RowgroupElement()
 
 
 
@@ -139,7 +141,7 @@ class WorkoutProgramsPage(BasePage):
     first_row_bodypart = element.FirstWorkoutBodyPart()
     searchbar_status = element.SearchbarWorkoutStatus()
     searchbar = element.SearchbarWorkout()
-    workouts_rowgroup =  element.WorkoutsRowGroup()
+    #workouts_rowgroup =  element.RowgroupElement()
 
     def workoutProgramsPageCheck(self):
         WebDriverWait(self.driver, 10).until(
@@ -178,10 +180,33 @@ class WorkoutProgramsPage(BasePage):
 
 class TestimonialsPage(BasePage):
     
+    input_name = element.CreateTestimonialNameInput()
+    input_desc = element.CreateTestimonialDescInput()
+    input_file = element.CreateTestimonialFileInplut()
+    add_test = element.CreateTestimonialButton()
+    test_submit_button = element.CreateTestimonialSubmitButton()
+    test_delete_button = element.TestimonialFirstRowDeleteButton()
+
+
     def testimonialsPageCheck(self):
         WebDriverWait(self.driver, 10).until(
             lambda driver: driver.find_element(*locators.TestimonialsPageLocators.PAGE_HEADER))
         return "Testimonials" in self.driver.title
+
+    def clickSubmit(self):
+
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.TestimonialsPageLocators.ADD_TEST_SUBMIT_BUTTON))
+        element = self.driver.find_element(*locators.TestimonialsPageLocators.ADD_TEST_SUBMIT_BUTTON)
+        element.click()
+
+    def deleteFirstTestimonial(self):
+
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: driver.find_element(*locators.TestimonialsPageLocators.FIRST_ROW_DELETE_BUTTON))
+        element = self.driver.find_element(*locators.TestimonialsPageLocators.FIRST_ROW_DELETE_BUTTON)
+        element.click()       
+
 
     
 

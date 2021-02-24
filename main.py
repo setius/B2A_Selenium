@@ -10,11 +10,9 @@ class B2ATests(unittest.TestCase):
         self.driver = webdriver.Chrome(executable_path=r'C:\chromedriver.exe')
         self.driver.maximize_window()
         self.driver.get(credentials.WEBSITE)
-        '''Welcome page'''
         welcome_page = page.WelcomePage(self.driver)
         assert welcome_page.welcomePageCheck(), "Welcome page text did not match"
         welcome_page.clickGoToApp()
-        '''Login Page'''
         login_page = page.LoginPage(self.driver)
         assert login_page.loginPageCheck(), "Login page text did not match"
         login_page.email_text_element = credentials.USER
@@ -26,9 +24,7 @@ class B2ATests(unittest.TestCase):
         self.driver.close()
 
     def dis_test1_AddUser(self):
-        '''This test case verifies functionality of adding new user
-            and also checks if user attributes are set properly
-            Creation of users is commented because we cannot delete users from GUI'''
+
         main_page = page.MainPage(self.driver)
         assert main_page.mainPageCheck(), "Main Page title did not match"
         user = 'Carl Johnson'
@@ -57,6 +53,7 @@ class B2ATests(unittest.TestCase):
         
 
     def dis_test2_ClientsSearchBarVerification(self):
+
         user = 'Carl Johnson'
         email = 'cj_grooveStreetFL@gmail.com'
         active_status = 'Active'
@@ -72,12 +69,12 @@ class B2ATests(unittest.TestCase):
         main_page.clickSearchBarClear()
         main_page.searchbar_status = inactive_status
         time.sleep(1)
-        active_column = main_page.get_column_data(main_page.clients_rowgroup, 8)
+        active_column = main_page.get_column_data(main_page.rowgroup, 8)
         assert all(element==inactive_status for element in active_column), "Search did not filter status properly"
         main_page.clickSearchBarClear()
         main_page.searchbar_gym = gym
         time.sleep(1)
-        gym_column = main_page.get_column_data(main_page.clients_rowgroup, 5)
+        gym_column = main_page.get_column_data(main_page.rowgroup, 5)
         assert all(element==gym for element in gym_column), "Search did not filter gym properly"
 
     def dis_test3_checkRecipesPage(self):
@@ -101,7 +98,7 @@ class B2ATests(unittest.TestCase):
         time.sleep(1)
         assert recipes_page.first_recipe_name.text not in RECIPE_NAME, "Recipe was not deleted properly after test"
 
-    def test4_workoutProgramsCheck(self):
+    def dis_test4_workoutProgramsCheck(self):
 
         WORKOUT_TITLE = 'Chest workout'
         WORKOUT_DESC = 'Basic chest workout for beginners. Mostly push-ups'
@@ -129,16 +126,35 @@ class B2ATests(unittest.TestCase):
         workouts_page.clickFirstDelete()
         workouts_page.searchbar_status = "Published"
         time.sleep(1)
-        status_column = workouts_page.get_column_data(workouts_page.workouts_rowgroup, 6)
+        status_column = workouts_page.get_column_data(workouts_page.rowgroup, 6)
         assert all(element=="Published" for element in status_column), "Search did not filter status properly"
         workouts_page.searchbar_status = "All"
         workouts_page.searchbar = "Shoulders"
         time.sleep(1)
-        bodypart_column = workouts_page.get_column_data(workouts_page.workouts_rowgroup, 2)
+        bodypart_column = workouts_page.get_column_data(workouts_page.rowgroup, 2)
         assert all(element=="Shoulders" for element in bodypart_column), "Search did not filter body parts properly"
 
-
-
+    def test5_testimonialsPage(self):
+        
+        NAME = "Johnny Bravo"
+        DESC = "Johnny Bravo tranformation"
+        FILE_PATH = r"C:\Users\jania\Desktop\Repositories\B2A_Selenium\johnny.PNG"
+        main_page = page.MainPage(self.driver)
+        assert main_page.mainPageCheck(), "Main Page title did not match"
+        main_page.clickTestimonialsPage()
+        test_page = page.TestimonialsPage(self.driver)
+        assert test_page.testimonialsPageCheck(), "Testimonials page did not match"
+        test_page.add_test.click()
+        test_page.input_name = NAME
+        test_page.input_desc = DESC
+        test_page.input_file = FILE_PATH
+        test_page.test_submit_button.click()
+        time.sleep(1)
+        assert NAME in test_page.get_column_data(test_page.rowgroup, 2)[0], "User testimonial was not created properly"
+        assert DESC in test_page.get_column_data(test_page.rowgroup, 3)[0], "User description was not set properly"
+        test_page.test_delete_button.click()
+        time.sleep(1)
+        assert NAME not in test_page.get_column_data(test_page.rowgroup, 2)[0], "User testimonial was not deleted properly"       
 
 
 
