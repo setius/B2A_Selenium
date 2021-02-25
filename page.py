@@ -1,4 +1,5 @@
 from selenium.webdriver.support.ui import WebDriverWait
+import time
 import locators
 import element
 
@@ -11,6 +12,7 @@ class BasePage(object):
 
     def get_column_data(self, table, column):
         xpath = ".//td[" + str(column) + "]"
+        time.sleep(0.5)
         return list(row.find_element_by_xpath(xpath).text for row in table.find_elements_by_xpath(".//tr"))
 
             
@@ -48,11 +50,11 @@ class MainPage(BasePage):
     add_user_phone = element.AddUserPhone()
     add_user_calories = element.AddUserCalories()
     add_user_gym = element.AddUserSelectGym()
-    first_user_select_gym = element.FirstUserSelectGym()
-    first_user_name = element.FirstUserName()
-    first_user_email = element.FirstUserEmail()
-    first_user_phone = element.FirstUserPhone()
-    first_user_status = element.FirstUserStatus()
+    #first_user_select_gym = element.FirstUserSelectGym()
+    #first_user_name = element.FirstUserName()
+    #first_user_email = element.FirstUserEmail()
+    #first_user_phone = element.FirstUserPhone()
+    #first_user_status = element.FirstUserStatus()
     searchbar_name = element.SearchBarName()
     searchbar_status = element.SearchBarSelectStatus()
     searchbar_gym = element.SearchBarSelectGym()
@@ -104,7 +106,7 @@ class RecipesPage(BasePage):
     add_recipe_title = element.InputRecipeName()
     upload_img_recipe = element.UploadRecipeIMG()
     upload_pdf_recipe = element.UploadRecipePDF()
-    first_recipe_name = element.FirstRecipeName()
+    #first_recipe_name = element.FirstRecipeName()
 
     def recipesPageCheck(self):
         WebDriverWait(self.driver, 10).until(
@@ -135,10 +137,10 @@ class WorkoutProgramsPage(BasePage):
     add_desc = element.InputWorkoutDescription()
     add_bodyPart = element.InputWorkoutBodyPart()
     add_YTlink = element.InputWorkoutYoutubeLink()
-    first_row_title = element.FirstWorkoutTitle()
-    first_row_desc = element.FirstWorkoutDesc()
-    first_row_yt = element.FirstWorkoutYoutube()
-    first_row_bodypart = element.FirstWorkoutBodyPart()
+    #first_row_title = element.FirstWorkoutTitle()
+    #first_row_desc = element.FirstWorkoutDesc()
+    #first_row_yt = element.FirstWorkoutYoutube()
+    #first_row_bodypart = element.FirstWorkoutBodyPart()
     searchbar_status = element.SearchbarWorkoutStatus()
     searchbar = element.SearchbarWorkout()
     #workouts_rowgroup =  element.RowgroupElement()
@@ -193,12 +195,6 @@ class TestimonialsPage(BasePage):
             lambda driver: driver.find_element(*locators.TestimonialsPageLocators.PAGE_HEADER))
         return "Testimonials" in self.driver.title
 
-    def clickSubmit(self):
-
-        WebDriverWait(self.driver, 10).until(
-            lambda driver: driver.find_element(*locators.TestimonialsPageLocators.ADD_TEST_SUBMIT_BUTTON))
-        element = self.driver.find_element(*locators.TestimonialsPageLocators.ADD_TEST_SUBMIT_BUTTON)
-        element.click()
 
     def deleteFirstTestimonial(self):
 

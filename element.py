@@ -102,26 +102,6 @@ class AddUserSelectGym(BaseDropDownBarElement):
     locator = locators.MainPageLocators.ADD_GYM_FIELD
     classname = 'mat-option-text'
 
-class FirstUserSelectGym(BaseDropDownBarElement):
-
-    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_GYM
-    classname = 'mat-option-text'
-
-class FirstUserName(BasePageElement):
-
-    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_NAME
-
-class FirstUserEmail(BasePageElement):
-
-    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_EMAIL
-
-class FirstUserPhone(BasePageElement):
-
-    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_PHONE
-
-class FirstUserStatus(BasePageElement):
-
-    locator = locators.MainPageLocators.CLIENT_LIST_FIRST_ROW_STATUS
 
 class SearchBarName(BasePageElement):
     
@@ -136,10 +116,6 @@ class SearchBarSelectGym(BaseDropDownBarElement):
 
     locator = locators.MainPageLocators.SEARCHBAR_GYM
     classname = 'mat-option-text'
-
-class ClientsRowGroup(BasePageElement):
-
-    locator = locators.GenericLocators.ROWGROUP
 
 
 
@@ -157,9 +133,6 @@ class UploadRecipePDF(BaseUploadFileElement):
 
     locator = locators.RecipesPageLocators.ADD_RECIPE_PDF_INPUT
 
-class FirstRecipeName(BasePageElement):
-
-    locator = locators.RecipesPageLocators.RECIPES_FIRST_ROW_TITLE
 
 
 
@@ -181,22 +154,6 @@ class InputWorkoutBodyPart(BaseDropDownBarElement):
 
     locator = locators.WorkoutProgramsPageLocators.ADD_WORKOUT_BODYPART
     classname = 'mat-option-text'
-
-class FirstWorkoutTitle(BasePageElement):
-
-    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_TITLE
-
-class FirstWorkoutDesc(BasePageElement):
-
-    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_DESC
-
-class FirstWorkoutBodyPart(BasePageElement):
-
-    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_BODYPART
-
-class FirstWorkoutYoutube(BasePageElement):
-
-    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_YT
 
 class SearchbarWorkoutStatus(BaseDropDownBarElement):
 
