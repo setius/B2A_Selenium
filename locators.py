@@ -19,8 +19,8 @@ class LoginPageLocators(object):
 
 class MainPageLocators(object):
 
-    ADD_CLIENT_BUTTON = (By.XPATH, '//button[@routerlink="/admin/clients/new-client"]')
-    ADD_SAVE_CHANGES_BUTTON = (By.XPATH, '//span[normalize-space()="Save Changes"]')
+    ADD_CLIENT_BUTTON = (By.XPATH, '//button[not(@disabled) and @routerlink="/admin/clients/new-client"]')
+    ADD_SAVE_CHANGES_BUTTON = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "Save Changes")]]')
     ADD_ACTIVE_SLIDER = (By.CLASS_NAME, 'mat-slide-toggle-bar')
     ADD_NAME_FIELD = (By.XPATH, '//input[@formcontrolname="name"]')
     ADD_EMAIL_FIELD = (By.XPATH, '//input[@formcontrolname="email"]')
@@ -37,21 +37,21 @@ class MainPageLocators(object):
 
 class RecipesPageLocators(object):
 
-    ADD_RECIPE_BUTTON = (By.XPATH, '//mat-icon[normalize-space()="add"]')
+    ADD_RECIPE_BUTTON = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "Recipe")]]')
     ADD_RECIPE_TITLE = (By.XPATH, '//input[@placeholder="Title"]')
     ADD_RECIPE_IMG_INPUT = (By.XPATH, '//div[@class="form-control-attachments"]/div[1]//input[@type="file"]')
     ADD_RECIPE_PDF_INPUT = (By.XPATH, '//div[@class="form-control-attachments"]/div[2]//input[@type="file"]')
-    RECIPE_SUBMIT_BUTTON = (By.XPATH, '//button[not(@disabled)]/span[normalize-space()="Submit"]')
-    REMOVE_IMG_BUTTON = (By.XPATH, '//span[normalize-space()="Remove image"]')
-    REMOVE_PDF_BUTTON = (By.XPATH, '//span[normalize-space()="Remove recipe file"]')
+    RECIPE_SUBMIT_BUTTON = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "Submit")]]')
+    REMOVE_IMG_BUTTON = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "Remove Image")]]')
+    REMOVE_PDF_BUTTON = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "Remove recipe file")]]')
     RECIPES_FIRST_ROW_DELETE = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[5]/div/button[2]')
-    RECIPES_CONFIRM_DELETE = (By.XPATH, '//span[normalize-space()="OK"]')
+    RECIPES_CONFIRM_DELETE = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "OK")]]')
 
 
 class WorkoutProgramsPageLocators(object):
 
     PAGE_HEADER = (By.XPATH, '//h2[normalize-space()="Workout programs"]')
-    ADD_WORKOUT_BUTTON = (By.XPATH, '//mat-icon[normalize-space()="add"]')
+    ADD_WORKOUT_BUTTON = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "Workout Program")]]')
     ADD_WORKOUT_YT = (By.XPATH, '//input[@formcontrolname="youtubeVideoId"]')
     ADD_WORKOUT_DESC = (By.XPATH, '//input[@formcontrolname="description"]')
     ADD_WORKOUT_TITLE = (By.XPATH, '//input[@formcontrolname="title"]')
@@ -61,17 +61,18 @@ class WorkoutProgramsPageLocators(object):
     SEARCH_STATUS = (By.XPATH, '//div[@class="top-form"]/mat-form-field[2]')
     WORKOUT_FIRST_ROW_PREVIEW_BUTTON = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[8]/div/button[1]')
     WORKOUT_FIRST_ROW_DELETE_BUTTON = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[8]/div/button[3]')
-    PREVIEW_CANCEL_BUTTON = (By.XPATH, '//span[normalize-space()="Cancel"]')
+    PREVIEW_CANCEL_BUTTON = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "Cancel")]]')
     
 
 class TestimonialsPageLocators(object):
 
     PAGE_HEADER = (By.XPATH, '//h2[normalize-space()="Testimonials"]')
-    ADD_TESTIMONIAL_BUTTON = (By.XPATH, '//mat-icon[normalize-space()="add"]')
+    ADD_TESTIMONIAL_BUTTON = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "Testimonial")]]')
     FIRST_ROW_DELETE_BUTTON = (By.XPATH, '//tbody[@role="rowgroup"]/tr[1]/td[6]/div/button[2]')
     ADD_TEST_NAME = (By.XPATH, '//input[@formcontrolname="clientName"]')
     ADD_TEST_DESC = (By.XPATH, '//input[@formcontrolname="description"]')
     ADD_TEST_IMG = (By.XPATH, '//input[@type="file"]')
-    ADD_TEST_SUBMIT_BUTTON = (By.XPATH, '//button[not(@disabled)]/span[normalize-space()="Submit"]')
+    ADD_TEST_SUBMIT_BUTTON = (By.XPATH, '//button[not(@disabled) and .//span[contains(text(), "Submit")]]')
+
 
 

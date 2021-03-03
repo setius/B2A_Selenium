@@ -3,7 +3,7 @@ import locators
 
 
 class BasePageElement(object):
-    """Base page class that is initialized on every page object class."""
+    """Base Page element with methods used in set input text and get element"""
 
     def __set__(self, obj, value):
         """Sets the text field to the value supplied"""
@@ -36,13 +36,12 @@ class BaseDropDownBarElement(object):
 
 
     def __get__(self, obj, owner):
-        """Gets the text of the specified object"""
+        
         driver = obj.driver
         WebDriverWait(driver, 5).until(
             lambda driver: driver.find_element(*self.locator)) 
         element = driver.find_element(*self.locator)
         return element
-
 
 class BaseUploadFileElement(object):
     """Base class used to handle file upload input."""
@@ -102,7 +101,6 @@ class AddUserSelectGym(BaseDropDownBarElement):
     locator = locators.MainPageLocators.ADD_GYM_FIELD
     classname = 'mat-option-text'
 
-
 class SearchBarName(BasePageElement):
     
     locator = locators.MainPageLocators.SEARCHBAR_NAME
@@ -116,6 +114,34 @@ class SearchBarSelectGym(BaseDropDownBarElement):
 
     locator = locators.MainPageLocators.SEARCHBAR_GYM
     classname = 'mat-option-text'
+
+class AddClientButton(BasePageElement):
+
+    locator = locators.MainPageLocators.ADD_CLIENT_BUTTON
+
+class AddClientSubmitButton(BasePageElement):
+
+    locator = locators.MainPageLocators.ADD_SAVE_CHANGES_BUTTON
+
+class AddClientActiveButton(BasePageElement):
+
+    locator = locators.MainPageLocators.ADD_ACTIVE_SLIDER
+
+class ClearSearchBarButton(BasePageElement):
+
+    locator = locators.MainPageLocators.SEARCHBAR_CLEAR
+
+class GoToRecipesButton(BasePageElement):
+
+    locator = locators.MainPageLocators.GO_TO_RECIPES
+
+class GoToWorkoutsButton(BasePageElement):
+
+    locator = locators.MainPageLocators.GO_TO_WORKOUTS
+
+class GoToTestimonialsButton(BasePageElement):
+
+    locator = locators.MainPageLocators.GO_TO_TESTIMONIALS
 
 
 
@@ -133,6 +159,21 @@ class UploadRecipePDF(BaseUploadFileElement):
 
     locator = locators.RecipesPageLocators.ADD_RECIPE_PDF_INPUT
 
+class AddRecipeButton(BasePageElement):
+
+    locator = locators.RecipesPageLocators.ADD_RECIPE_BUTTON
+
+class SubmitRecipeButton(BasePageElement):
+
+    locator = locators.RecipesPageLocators.RECIPE_SUBMIT_BUTTON
+
+class DeleteFirstRecipeButton(BasePageElement):
+
+    locator = locators.RecipesPageLocators.RECIPES_FIRST_ROW_DELETE
+
+class DeleteFirstRecipeConfirmButton(BasePageElement):
+
+    locator = locators.RecipesPageLocators.RECIPES_CONFIRM_DELETE
 
 
 
@@ -167,6 +208,26 @@ class SearchbarWorkout(BasePageElement):
 class WorkoutsRowGroup(BasePageElement):
 
     locator = locators.GenericLocators.ROWGROUP
+
+class AddWorkoutButton(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.ADD_WORKOUT_BUTTON
+
+class AddWorkoutSubmitButton(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.ADD_WORKOUT_SUBMIT
+
+class FirstWorkoutPreviewButton(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_PREVIEW_BUTTON
+
+class CancelPreviewButton(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.PREVIEW_CANCEL_BUTTON
+
+class DeleteFirstWorkoutButton(BasePageElement):
+
+    locator = locators.WorkoutProgramsPageLocators.WORKOUT_FIRST_ROW_DELETE_BUTTON
 
 
 
